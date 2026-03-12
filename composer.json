@@ -1,0 +1,27 @@
+{
+  "name": "fusio/adapter-gcp-zero-trust",
+  "description": "Fusio adapter providing Cloud Run zero-trust HTTP connection with ID token auth",
+  "homepage": "https://github.com/xml/fusio-adapter-gcp-zero-trust",
+  "keywords": ["fusio-adapter", "fusio", "gcp", "cloud-run", "guzzle", "zero-trust"],
+  "license": "Apache-2.0",
+  "require": {
+    "php": ">=8.1",
+    "fusio/engine": "^6.0",
+    "google/auth": "^1.50",
+    "guzzlehttp/guzzle": "^7.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^12.0",
+    "phpstan/phpstan": "^2.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Fusio\\Adapter\\GcpZeroTrust\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Fusio\\Adapter\\GcpZeroTrust\\Tests\\": "tests/"
+    }
+  }
+}
