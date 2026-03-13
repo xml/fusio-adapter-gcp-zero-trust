@@ -90,7 +90,25 @@ final class GoogleCloudRunHttpAction extends ActionAbstract
 
         $response = $client->request($method, ltrim($path, '/'), $options);
 
-        return $this->response->proxy($response);
+        // Build response manually using build() for compatibility with engine v6.6+
+        // (proxy() was added in engine v6.8)
+        $headers = [];
+        foreach ($response->getHeaders() as $name => $values) {
+            $headers[$name] = implode(', ', $values);
+        }
+
+        $body = (string) $response->getBody();
+        $contentType = $response->getHeaderLine('Content-Type');
+
+        // Parse JSON responses so Fusio can handle them natively
+        if (str_contains($contentType, 'application/json') && $body !== '') {
+            $decoded = json_decode($body, true);
+            if (json_last_error() === JSON_ERROR_NONE) {
+                $body = $decoded;
+            }
+        }
+
+        return $this->response->build($response->getStatusCode(), $headers, $body);
     }
 
     private function resolveMethod(RequestInterface $request, string $configured): string
