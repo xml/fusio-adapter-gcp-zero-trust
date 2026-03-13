@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Fusio\Adapter\GcpZeroTrust\Connection;
 
 use Fusio\Adapter\GcpZeroTrust\Auth\CachedIdTokenProvider;
-use Fusio\Engine\ConnectionInterface;
+use Fusio\Engine\ConnectionAbstract;
 use Fusio\Engine\Form\BuilderInterface;
 use Fusio\Engine\Form\ElementFactoryInterface;
 use Fusio\Engine\ParametersInterface;
@@ -17,7 +17,7 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Throwable;
 
-final class GoogleCloudRunHttpConnection implements ConnectionInterface
+final class GoogleCloudRunHttpConnection extends ConnectionAbstract
 {
     public function __construct(
         private CachedIdTokenProvider $tokenProvider
