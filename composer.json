@@ -1,5 +1,5 @@
 {
-  "name": "fusio/adapter-gcp-zero-trust",
+  "name": "xml/fusio-adapter-gcp-zero-trust",
   "description": "Fusio adapter providing Cloud Run zero-trust HTTP connection with ID token auth",
   "homepage": "https://github.com/xml/fusio-adapter-gcp-zero-trust",
   "keywords": ["fusio-adapter", "fusio", "gcp", "cloud-run", "guzzle", "zero-trust"],
